@@ -1,6 +1,6 @@
 local configuratie = {
 	aantalMollen = 1,
-	redPercentage = 100 
+	aantalRedden = 1 
 }
 
 return configuratie
