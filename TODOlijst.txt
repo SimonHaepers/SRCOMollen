@@ -1,0 +1,49 @@
+SRCO Mollen
+===========
+
+Grafisch
+--------
+Levels bouwen. Te maken met Tiled. Minstens de lagen
+	a) Achtergrond (voor achtergrondafbeelding)
+	b) Achtergrondobjecten
+	c) Mollenlaag
+	d) Voorgrondobjecten
+
+	1. Zeer eenvoudige level, gewoon met vierkante blokjes: |_u__i_|
+	2. ...
+Animaties (=sprites). Te maken met ???
+	1. Lopende mollen
+	2. Vallende mollen
+	3. ...
+Allerlei
+	1. Actieknoppen (Aparte figuur in Tiled?)
+		a) Versnellen
+		b) Kill all
+		c) Graven?
+	2. Menu's
+	3. ...
+
+Programmeren
+------------
+Afspraken
+	Geen hardgecodeerde constantes! File constantes.lua maken?
+	Kameelschrift met onderkasletter als eerste
+	...
+
+Objecten
+	Level
+		number aantalMollen
+		number percentageRedden
+		...
+	Mol
+		boolean richting (links/rechts)
+		...
+
+TODO
+	Actieknoppen
+		1. Kill all
+		2. Versnellen
+		3. ...
+	Mol horizontaal/verticaal laten bewegen
+	Ingang/uitgang laten werken
+	Koppeling met Tiled	(WITJ)
