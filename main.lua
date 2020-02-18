@@ -19,6 +19,6 @@ function love.update()
 end
 
 function love.draw()
-	love.graphics.draw(achtergrond)	
+	state.level:draw()
 	-- TODO
 end
