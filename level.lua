@@ -25,14 +25,33 @@ local function laadTileset(map)
 	for _,set in ipairs(map.tilesets) do
 		local afbeelding = love.graphics.newImage(string.sub(set.image,4,-1))
 		local counter = set.firstgid
-		for kolom = 1,set.columns do
-			for rij = 1, set.tilecount / set.columns do
+		for rij = 1, set.tilecount / set.columns do
+			for kolom = 1,set.columns do
 				tiles[counter] = { afbeelding=afbeelding, quad = love.graphics.newQuad((kolom-1)*set.tilewidth,(rij-1)*set.tileheight,set.tilewidth,set.tileheight,set.imagewidth,set.imageheight) }
 				counter = counter + 1  
 			end
 		end
 	end
 	return tiles
+end
+
+--- Laad de map met tiles uit een Tiled map
+-- @param map De map waaruit de informatie gehaald wordt.
+local function laadTilemap(map)
+	local tilemap = { }
+	local layer = map.layers[3]
+	assert(layer.name == "Game")
+	for rij = 1,layer.height do
+		for kolom = 1,layer.width do
+			local id = layer.data[(rij-1)*layer.width+kolom]
+			if id ~= 0 then
+				local x = (kolom-1)*map.tilewidth
+				local y = (rij-1)*map.tileheight
+				table.insert(tilemap,{x=x,y=y,id=id})
+			end
+		end
+	end
+	return tilemap
 end
 
 --- Laad informatie uit een Tiled map naar een level
@@ -51,7 +70,7 @@ local function laadTiledMap(level,map)
 	local game = map.layers[3]
 	assert(game.name == "Game")
 	level.tiles = laadTileset(map)
-	-- TODO
+	level.gametiles = laadTilemap(map)
 
 	-- TODO Voorgrondobjecten
 end
@@ -82,7 +101,9 @@ end
 
 function Level:draw()
 	love.graphics.draw(self.achtergrond)
-	love.graphics.draw(self.tiles[1].afbeelding,self.tiles[1].quad)	-- TODO: aanpassen!!
+	for _,t in ipairs(self.gametiles) do
+		love.graphics.draw(self.tiles[t.id].afbeelding,self.tiles[t.id].quad,t.x,t.y)	
+	end
 end
 
 return Level
