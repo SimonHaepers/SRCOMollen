@@ -35,7 +35,9 @@ local function laadTileset(map)
 		else -- tileset op basis van meerdere afbeeldingen
 			for objectnr = 1, set.tilecount do
 				local tile = set.tiles[objectnr]
-				local afbeelding = love.graphics.newImage(tile.image,4,-1)
+				local afbeelding = love.graphics.newImage(string.sub(tile.image,4,-1))
+				tiles[counter] = { afbeelding=afbeelding, width=tile.width, height=tile.height }
+				debugPrint("Voeg object toe op counter "..counter.." ("..string.sub(tile.image,4,-1)..")")
 				counter = counter + 1
 			end
 		end
@@ -43,12 +45,18 @@ local function laadTileset(map)
 	return tiles
 end
 
+local function laadObjecten(map,layer)
+	local objecten = { }
+	for n,object in ipairs(layer.objects) do
+		objecten[n] = {x=object.x,y=object.y,id=object.gid}	-- NOTE: geen idee waarom die -1 er moet staan...
+	end
+	return objecten
+end
+
 --- Laad de map met tiles uit een Tiled map
 -- @param map De map waaruit de informatie gehaald wordt.
-local function laadTilemap(map)
+local function laadTilemap(map,layer)
 	local tilemap = { }
-	local layer = map.layers[3]
-	assert(layer.name == "Game")
 	for rij = 1,layer.height do
 		for kolom = 1,layer.width do
 			local id = layer.data[(rij-1)*layer.width+kolom]
@@ -67,18 +75,23 @@ end
 -- @param map De map die geladen wordt
 -- @return nil
 local function laadTiledMap(level,map)
+	-- Tiles en objecten inlezen
+	level.tiles = laadTileset(map)
+
 	-- Achtergrondlaag
 	local achtergrond = map.layers[1]
 	assert(achtergrond.name == "Achtergrond")
 	level.achtergrond = love.graphics.newImage(string.sub(achtergrond.image,4,-1))
 
-	-- TODO Achtergrondobjecten
+	-- Achtergrondobjecten
+	local achtergrondobjecten = map.layers[2]
+	assert(achtergrondobjecten.name == "AchtergrondObjecten")
+	level.achtergrondobjecten = laadObjecten(map,achtergrondobjecten)
 	
 	-- Gamelaag
 	local game = map.layers[3]
 	assert(game.name == "Game")
-	level.tiles = laadTileset(map)
-	level.gametiles = laadTilemap(map)
+	level.gametiles = laadTilemap(map,game)
 
 	-- TODO Voorgrondobjecten
 end
@@ -109,6 +122,9 @@ end
 
 function Level:draw()
 	love.graphics.draw(self.achtergrond)
+	for _,o in ipairs(self.achtergrondobjecten) do
+		love.graphics.draw(self.tiles[o.id].afbeelding,o.x,o.y-self.tiles[o.id].height)
+	end
 	for _,t in ipairs(self.gametiles) do
 		love.graphics.draw(self.tiles[t.id].afbeelding,self.tiles[t.id].quad,t.x,t.y)	
 	end
