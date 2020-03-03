@@ -23,12 +23,20 @@ local basisConfiguratie = {
 local function laadTileset(map)
 	local tiles = { }
 	for _,set in ipairs(map.tilesets) do
-		local afbeelding = love.graphics.newImage(string.sub(set.image,4,-1))
 		local counter = set.firstgid
-		for rij = 1, set.tilecount / set.columns do
-			for kolom = 1,set.columns do
-				tiles[counter] = { afbeelding=afbeelding, quad = love.graphics.newQuad((kolom-1)*set.tilewidth,(rij-1)*set.tileheight,set.tilewidth,set.tileheight,set.imagewidth,set.imageheight) }
-				counter = counter + 1  
+		if set.image then	-- tileset op basis van 1 afbeelding
+			local afbeelding = love.graphics.newImage(string.sub(set.image,4,-1))
+			for rij = 1, set.tilecount / set.columns do
+				for kolom = 1,set.columns do
+					tiles[counter] = { afbeelding=afbeelding, quad = love.graphics.newQuad((kolom-1)*set.tilewidth,(rij-1)*set.tileheight,set.tilewidth,set.tileheight,set.imagewidth,set.imageheight) }
+					counter = counter + 1  
+				end
+			end
+		else -- tileset op basis van meerdere afbeeldingen
+			for objectnr = 1, set.tilecount do
+				local tile = set.tiles[objectnr]
+				local afbeelding = love.graphics.newImage(tile.image,4,-1)
+				counter = counter + 1
 			end
 		end
 	end

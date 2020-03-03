@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 5,
-  nextobjectid = 1,
+  nextobjectid = 5,
   properties = {},
   tilesets = {
     {
@@ -43,6 +43,42 @@ return {
           }
         }
       }
+    },
+    {
+      name = "Objecten",
+      firstgid = 9,
+      filename = "../graphics/Objecten.tsx",
+      tilewidth = 64,
+      tileheight = 64,
+      spacing = 0,
+      margin = 0,
+      columns = 0,
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 1,
+        height = 1
+      },
+      properties = {},
+      terrains = {},
+      tilecount = 2,
+      tiles = {
+        {
+          id = 1,
+          image = "../graphics/deur.png",
+          width = 64,
+          height = 64
+        },
+        {
+          id = 2,
+          image = "../graphics/molshoop.png",
+          width = 64,
+          height = 64
+        }
+      }
     }
   },
   layers = {
@@ -67,7 +103,36 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 3,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 256.058,
+          y = 352.581,
+          width = 64,
+          height = 64,
+          rotation = 0,
+          gid = 10,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 4,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 973.88,
+          y = 543.071,
+          width = 64,
+          height = 64,
+          rotation = 0,
+          gid = 11,
+          visible = true,
+          properties = {}
+        }
+      }
     },
     {
       type = "tilelayer",

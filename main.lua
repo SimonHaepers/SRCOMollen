@@ -10,7 +10,6 @@ end
 function love.load()
 	state = { }
 	state.level = laadLevel()
-	achtergrond = love.graphics.newImage("graphics/wolken.png")
 	-- TODO
 end
 
