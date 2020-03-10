@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 5,
-  nextobjectid = 5,
+  nextobjectid = 8,
   properties = {},
   tilesets = {
     {
@@ -48,8 +48,8 @@ return {
       name = "Objecten",
       firstgid = 9,
       filename = "../graphics/Objecten.tsx",
-      tilewidth = 64,
-      tileheight = 64,
+      tilewidth = 320,
+      tileheight = 384,
       spacing = 0,
       margin = 0,
       columns = 0,
@@ -64,19 +64,25 @@ return {
       },
       properties = {},
       terrains = {},
-      tilecount = 2,
+      tilecount = 3,
       tiles = {
         {
-          id = 1,
+          id = 0,
           image = "../graphics/deur.png",
           width = 64,
           height = 64
         },
         {
-          id = 2,
+          id = 1,
           image = "../graphics/molshoop.png",
           width = 64,
           height = 64
+        },
+        {
+          id = 2,
+          image = "../graphics/boom.png",
+          width = 320,
+          height = 384
         }
       }
     }
@@ -105,30 +111,30 @@ return {
       properties = {},
       objects = {
         {
-          id = 3,
+          id = 5,
           name = "",
           type = "",
           shape = "rectangle",
-          x = 256.058,
-          y = 352.581,
+          x = 352.5,
+          y = 384,
           width = 64,
           height = 64,
           rotation = 0,
-          gid = 10,
+          gid = 9,
           visible = true,
           properties = {}
         },
         {
-          id = 4,
+          id = 6,
           name = "",
           type = "",
           shape = "rectangle",
-          x = 973.88,
-          y = 543.071,
+          x = 832,
+          y = 544,
           width = 64,
           height = 64,
           rotation = 0,
-          gid = 11,
+          gid = 10,
           visible = true,
           properties = {}
         }
@@ -179,7 +185,22 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 7,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 557.822,
+          y = 577.626,
+          width = 320,
+          height = 384,
+          rotation = 0,
+          gid = 11,
+          visible = true,
+          properties = {}
+        }
+      }
     }
   }
 }
