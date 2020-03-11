@@ -147,7 +147,7 @@ function Level:pixelSoort(x,y)
 	-- TODO
 	
 	-- NOTE: voorlopige versie
-	if tile > 0 then
+	if tile and tile > 0 then
 		return 1
 	else
 		return false

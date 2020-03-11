@@ -19,15 +19,17 @@ end
 
 function love.draw()
 	state.level:draw()
-	
-	-- NOTE: onderstaande is een test voor pixelSoort
-	for x = 1,250 do
-		for y = 1,550 do
+
+	-- NOTE: Onderstaande is gewoon een test op Level:pixelSoort
+	for n=1,80 do
+		for m=1,56 do
+			local x = 16*n
+			local y = 16*m
 			if state.level:pixelSoort(x,y) then
-				love.graphics.rectangle("fill",x,y,1,1)
-			else
-				--love.graphics.rectangle("fill",x,y,1,1)
+				love.graphics.rectangle("fill",3*n,3*m+19*32,3,3)
+			else 
 			end
 		end
 	end
+	love.graphics.setColor(1,1,1,1)
 end

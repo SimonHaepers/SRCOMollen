@@ -81,7 +81,7 @@ return {
         {
           id = 2,
           image = "../graphics/boom.png",
-          width = 320,
+          width = 256,
           height = 384
         }
       }
@@ -191,8 +191,8 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = 557.822,
-          y = 577.626,
+          x = 622.822,
+          y = 545.626,
           width = 320,
           height = 384,
           rotation = 0,

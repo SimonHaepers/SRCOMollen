@@ -42,6 +42,6 @@
 </data>
  </layer>
  <objectgroup id="4" name="VoorgrondObjecten">
-  <object id="7" gid="11" x="557.822" y="577.626" width="320" height="384"/>
+  <object id="7" gid="11" x="622.822" y="545.626" width="320" height="384"/>
  </objectgroup>
 </map>
