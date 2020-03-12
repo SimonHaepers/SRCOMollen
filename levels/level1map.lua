@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 5,
-  nextobjectid = 1,
+  nextobjectid = 8,
   properties = {},
   tilesets = {
     {
@@ -43,6 +43,48 @@ return {
           }
         }
       }
+    },
+    {
+      name = "Objecten",
+      firstgid = 9,
+      filename = "../graphics/Objecten.tsx",
+      tilewidth = 320,
+      tileheight = 384,
+      spacing = 0,
+      margin = 0,
+      columns = 0,
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 1,
+        height = 1
+      },
+      properties = {},
+      terrains = {},
+      tilecount = 3,
+      tiles = {
+        {
+          id = 0,
+          image = "../graphics/deur.png",
+          width = 64,
+          height = 64
+        },
+        {
+          id = 1,
+          image = "../graphics/molshoop.png",
+          width = 64,
+          height = 64
+        },
+        {
+          id = 2,
+          image = "../graphics/boom.png",
+          width = 256,
+          height = 384
+        }
+      }
     }
   },
   layers = {
@@ -67,7 +109,36 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 5,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 352.5,
+          y = 384,
+          width = 64,
+          height = 64,
+          rotation = 0,
+          gid = 9,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 6,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 832,
+          y = 544,
+          width = 64,
+          height = 64,
+          rotation = 0,
+          gid = 10,
+          visible = true,
+          properties = {}
+        }
+      }
     },
     {
       type = "tilelayer",
@@ -114,7 +185,22 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 7,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 622.822,
+          y = 545.626,
+          width = 320,
+          height = 384,
+          rotation = 0,
+          gid = 11,
+          visible = true,
+          properties = {}
+        }
+      }
     }
   }
 }
